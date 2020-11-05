@@ -19,25 +19,11 @@ class DetailCollectionController: UICollectionViewController,  UICollectionViewD
         collectionView.collectionViewLayout = layout
         collectionView.backgroundColor = #colorLiteral(red: 0.1803921569, green: 0.1843137255, blue: 0.2549019608, alpha: 1)
         collectionView.register(FeedCell.self, forCellWithReuseIdentifier: "cell")
-        
         subCell.item = rssItem
-    }
-    
-    func heightForView(text:String, font:UIFont, width:CGFloat) -> CGFloat {
-        let label:UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: width, height: CGFloat.greatestFiniteMagnitude))
-        label.numberOfLines = 0
-        label.lineBreakMode = NSLineBreakMode.byWordWrapping
-        label.font = font
-        label.text = text
-
-        label.sizeToFit()
-        return label.frame.height
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        let height = heightForView(text: subCell.feedText.text!, font: UIFont.systemFont(ofSize: 18), width: view.frame.width)
-        
+        let height = LabelHeightCalculate.heightForView(text: subCell.feedText.text!, font: UIFont.systemFont(ofSize: 18), width: view.frame.width)
         return CGSize(width: view.frame.width, height: (view.frame.width * 1.3) + 205 + height )
     }
     

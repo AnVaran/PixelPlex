@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Feed View Controller-->
         <scene sceneID="wfu-ze-xlL">
             <objects>
-                <collectionViewController id="v5f-BI-ihL" customClass="ViewController" customModule="Pixel" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController id="v5f-BI-ihL" customClass="FeedViewController" customModule="Pixel" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="fa1-Wr-1V7">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

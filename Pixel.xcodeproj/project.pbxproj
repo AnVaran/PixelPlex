@@ -8,15 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		079E4199F87F6D289216B172 /* Pods_Pixel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B1721D5D5C6D2CE872065CB /* Pods_Pixel.framework */; };
-		8404BC662552B6D500C5B785 /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8404BC652552B6D500C5B785 /* CustomImageView.swift */; };
+		8404BC662552B6D500C5B785 /* LoadImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8404BC652552B6D500C5B785 /* LoadImage.swift */; };
 		8404BC742553523500C5B785 /* DetailCollectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8404BC732553523500C5B785 /* DetailCollectionController.swift */; };
 		84664E4A25515C290098994D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84664E4925515C290098994D /* AppDelegate.swift */; };
 		84664E4C25515C290098994D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84664E4B25515C290098994D /* SceneDelegate.swift */; };
-		84664E4E25515C290098994D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84664E4D25515C290098994D /* ViewController.swift */; };
+		84664E4E25515C290098994D /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84664E4D25515C290098994D /* FeedViewController.swift */; };
 		84664E5125515C290098994D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84664E4F25515C290098994D /* Main.storyboard */; };
 		84664E5325515C2A0098994D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84664E5225515C2A0098994D /* Assets.xcassets */; };
 		84664E5625515C2A0098994D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84664E5425515C2A0098994D /* LaunchScreen.storyboard */; };
 		84664E5F25518B8D0098994D /* RSSParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84664E5E25518B8D0098994D /* RSSParser.swift */; };
+		84BA6012255466D50016B950 /* LabelHeightCalculate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BA6011255466D50016B950 /* LabelHeightCalculate.swift */; };
 		84C44A9B25542B44006992D8 /* NetworkAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C44A9A25542B44006992D8 /* NetworkAccess.swift */; };
 		84C44A9E25542BEC006992D8 /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C44A9D25542BEC006992D8 /* FeedCell.swift */; };
 		84C44AA225542CFF006992D8 /* FeedLoad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C44AA125542CFF006992D8 /* FeedLoad.swift */; };
@@ -25,17 +26,18 @@
 /* Begin PBXFileReference section */
 		52F302A336D40F9F99623B9D /* Pods-Pixel.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pixel.debug.xcconfig"; path = "Target Support Files/Pods-Pixel/Pods-Pixel.debug.xcconfig"; sourceTree = "<group>"; };
 		7CB43F2C92EADC8608F8C726 /* Pods-Pixel.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pixel.release.xcconfig"; path = "Target Support Files/Pods-Pixel/Pods-Pixel.release.xcconfig"; sourceTree = "<group>"; };
-		8404BC652552B6D500C5B785 /* CustomImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
+		8404BC652552B6D500C5B785 /* LoadImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadImage.swift; sourceTree = "<group>"; };
 		8404BC732553523500C5B785 /* DetailCollectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCollectionController.swift; sourceTree = "<group>"; };
 		84664E4625515C290098994D /* Pixel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pixel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84664E4925515C290098994D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84664E4B25515C290098994D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		84664E4D25515C290098994D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		84664E4D25515C290098994D /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		84664E5025515C290098994D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		84664E5225515C2A0098994D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		84664E5525515C2A0098994D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		84664E5725515C2A0098994D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84664E5E25518B8D0098994D /* RSSParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSSParser.swift; sourceTree = "<group>"; };
+		84BA6011255466D50016B950 /* LabelHeightCalculate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelHeightCalculate.swift; sourceTree = "<group>"; };
 		84C44A9A25542B44006992D8 /* NetworkAccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkAccess.swift; sourceTree = "<group>"; };
 		84C44A9D25542BEC006992D8 /* FeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
 		84C44AA125542CFF006992D8 /* FeedLoad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedLoad.swift; sourceTree = "<group>"; };
@@ -87,6 +89,7 @@
 				84C44AA525543028006992D8 /* Controllers */,
 				84C44AA625543050006992D8 /* Views */,
 				84C44AA725543074006992D8 /* Networking */,
+				84BA6014255466DE0016B950 /* Helpers */,
 				84664E4F25515C290098994D /* Main.storyboard */,
 				84664E5225515C2A0098994D /* Assets.xcassets */,
 				84664E5425515C2A0098994D /* LaunchScreen.storyboard */,
@@ -95,10 +98,18 @@
 			path = Pixel;
 			sourceTree = "<group>";
 		};
+		84BA6014255466DE0016B950 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				84BA6011255466D50016B950 /* LabelHeightCalculate.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		84C44AA525543028006992D8 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				84664E4D25515C290098994D /* ViewController.swift */,
+				84664E4D25515C290098994D /* FeedViewController.swift */,
 				8404BC732553523500C5B785 /* DetailCollectionController.swift */,
 			);
 			path = Controllers;
@@ -117,7 +128,7 @@
 			children = (
 				84C44AA125542CFF006992D8 /* FeedLoad.swift */,
 				84664E5E25518B8D0098994D /* RSSParser.swift */,
-				8404BC652552B6D500C5B785 /* CustomImageView.swift */,
+				8404BC652552B6D500C5B785 /* LoadImage.swift */,
 				84C44A9A25542B44006992D8 /* NetworkAccess.swift */,
 			);
 			path = Networking;
@@ -255,14 +266,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84664E4E25515C290098994D /* ViewController.swift in Sources */,
+				84664E4E25515C290098994D /* FeedViewController.swift in Sources */,
 				84C44AA225542CFF006992D8 /* FeedLoad.swift in Sources */,
 				84664E4A25515C290098994D /* AppDelegate.swift in Sources */,
 				8404BC742553523500C5B785 /* DetailCollectionController.swift in Sources */,
 				84664E4C25515C290098994D /* SceneDelegate.swift in Sources */,
 				84664E5F25518B8D0098994D /* RSSParser.swift in Sources */,
 				84C44A9B25542B44006992D8 /* NetworkAccess.swift in Sources */,
-				8404BC662552B6D500C5B785 /* CustomImageView.swift in Sources */,
+				84BA6012255466D50016B950 /* LabelHeightCalculate.swift in Sources */,
+				8404BC662552B6D500C5B785 /* LoadImage.swift in Sources */,
 				84C44A9E25542BEC006992D8 /* FeedCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

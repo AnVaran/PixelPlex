@@ -76,7 +76,6 @@ class Parser: NSObject, XMLParserDelegate {
                 currentImage = imageUrl
             }
         }
-        
     }
     
     func parser(_ parser: XMLParser, foundCharacters string: String) {
@@ -91,25 +90,19 @@ class Parser: NSObject, XMLParserDelegate {
     
     func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
         if elementName == "item" {
-            
             do {
                 let doc: Document = try SwiftSoup.parse(currentDescription)
                 
                 let text: String = try doc.body()!.text()
                 sendText = text
-                
-                
             } catch Exception.Error(type: _, Message: let messege) {
                 print(messege)
             } catch {
                 print("error")
             }
-            
             let rssItem = RSSItem(imageURL: currentImage, title: currentTitle, auther: currentAuther, pubDate: currentPubDate, description: sendText)
             self.rssItems.append(rssItem)
-        }
-        
-        
+        } 
     }
     
     func parserDidEndDocument(_ parser: XMLParser) {

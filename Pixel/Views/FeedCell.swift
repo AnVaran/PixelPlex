@@ -12,9 +12,9 @@ class FeedCell: UICollectionViewCell {
         super.init(frame: frame)
         setupViews()
     }
-    
-    let feedImage: CustomImageView = {
-        let image = CustomImageView()
+    // MARK: Set Elements
+    let feedImage: LoadImage = {
+        let image = LoadImage()
         image.translatesAutoresizingMaskIntoConstraints = false
         image.backgroundColor = .gray
         image.contentMode = .scaleAspectFill
@@ -66,7 +66,7 @@ class FeedCell: UICollectionViewCell {
         text.textColor = #colorLiteral(red: 0.6274509804, green: 0.6470588235, blue: 0.7098039216, alpha: 1)
         return text
     }()
-    
+    // MARK: Get Feed Data
     var item: RSSItem! {
         didSet {
             authorLabel.text = item.auther
@@ -78,7 +78,7 @@ class FeedCell: UICollectionViewCell {
             }
         }
     }
-    
+    // MARK: Setup Views
     func setupViews() {
         
         addSubview(feedImage)

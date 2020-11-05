@@ -8,7 +8,7 @@
 import UIKit
 import CoreLocation
 
-class ViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, CLLocationManagerDelegate {
+class FeedViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, CLLocationManagerDelegate {
 
     private var rssItems: [RSSItem]?
     let file = "file.txt"
@@ -33,14 +33,11 @@ class ViewController: UICollectionViewController, UICollectionViewDelegateFlowLa
         collectionView.backgroundColor = #colorLiteral(red: 0.1803921569, green: 0.1843137255, blue: 0.2549019608, alpha: 1)
         collectionView.register(FeedCell.self, forCellWithReuseIdentifier: "Cell")
         collectionView.isHidden = true
-        
         navigationController?.navigationBar.isTranslucent = false
     }
-    
+    // MARK: - Location
     private func checkUserLocation() {
-
         locationManader.requestAlwaysAuthorization()
-        
         if CLLocationManager.locationServicesEnabled() {
             locationManader.delegate = self
             locationManader.desiredAccuracy = kCLLocationAccuracyBest
@@ -53,7 +50,6 @@ class ViewController: UICollectionViewController, UICollectionViewDelegateFlowLa
             geocoder.reverseGeocodeLocation(location) { (placemark, error) in
                 if error == nil {
                     guard let placemark = placemark?.last else { return }
-                    
                     self.hiddenFeed(from: placemark)
                 }
             }
@@ -76,14 +72,13 @@ class ViewController: UICollectionViewController, UICollectionViewDelegateFlowLa
     private func showGeolocateAlert() {
         let alertController = UIAlertController(title: "Нет доступа", message: "К сожалению данное приложение работает c геолокицией", preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)
-        
         alertController.addAction(cancelAction)
         self.present(alertController, animated: true, completion: nil)
     }
     
-    
     private func hiddenFeed(from placemark: CLPlacemark) {
         if let country = placemark.country {
+            print(country)
             if country == "Belarus" {
                 collectionView.isHidden = false
             } else {
@@ -93,10 +88,9 @@ class ViewController: UICollectionViewController, UICollectionViewDelegateFlowLa
             }
         }
     }
-    
+    // MARK: - Load Feed
     private func fetchDatafromFile() {
         if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
-
             let fileURL = dir.appendingPathComponent(file)
             //reading
             do {
@@ -126,15 +120,13 @@ class ViewController: UICollectionViewController, UICollectionViewDelegateFlowLa
                 }
             }
         }
+        
     }
-    
+    // MARK: - Collection View
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        //print(view.frame.height)
-        
         return CGSize(width: view.frame.width - 60, height: view.frame.height)
     }
-    
+    // MARK: - UICollectionViewDataSource
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         guard let rssItems = rssItems else {
             return 0
