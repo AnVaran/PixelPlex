@@ -10,17 +10,14 @@ import CoreLocation
 
 class FeedViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, CLLocationManagerDelegate {
 
+    let locationManager = LocationManager()
     private var rssItems: [RSSItem]?
     let file = "file.txt"
     var fileData = ""
     
-    let locationManader = CLLocationManager()
-    let geocoder = CLGeocoder()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-         
-        checkUserLocation()
+        getUserLocation()
         settingCollecctioView()
         fetchDatafromFile()
         fetchData()
@@ -35,58 +32,38 @@ class FeedViewController: UICollectionViewController, UICollectionViewDelegateFl
         collectionView.isHidden = true
         navigationController?.navigationBar.isTranslucent = false
     }
-    // MARK: - Location
-    private func checkUserLocation() {
-        locationManader.requestAlwaysAuthorization()
-        if CLLocationManager.locationServicesEnabled() {
-            locationManader.delegate = self
-            locationManader.desiredAccuracy = kCLLocationAccuracyBest
-            locationManader.startUpdatingLocation()
+    // MARK: - Check location AlertControllers
+    func getUserLocation() {
+        locationManager.getLocationCountry { [weak self] (country) in
+            if country == "Belarus" {
+                self?.collectionView.isHidden = false
+            } else {
+                self?.collectionView.isHidden = true
+                self?.showCanselAlert()
+                self?.locationManager.location.stopUpdatingLocation()
+                self?.locationManager.location.delegate = nil
+            }
         }
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        if let location = locations.last {
-            geocoder.reverseGeocodeLocation(location) { (placemark, error) in
-                if error == nil {
-                    guard let placemark = placemark?.last else { return }
-                    self.hiddenFeed(from: placemark)
-                }
+        
+        locationManager.getLocationIsDenied { [weak self] (isDdenied) in
+            if isDdenied {
+                self?.showGeolocateAlert()
             }
         }
     }
     
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        if status == CLAuthorizationStatus.denied {
-            showGeolocateAlert()
-        }
-    }
-    
+    // MARK: - Location AlertControllers
     private func showCanselAlert() {
         let alertController = UIAlertController(title: "Нет доступа", message: "К сожалению данное приложение работает только в Беларуси.", preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         alertController.addAction(cancelAction)
         self.present(alertController, animated: true, completion: nil)
     }
-    
     private func showGeolocateAlert() {
         let alertController = UIAlertController(title: "Нет доступа", message: "К сожалению данное приложение работает c геолокицией", preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)
         alertController.addAction(cancelAction)
         self.present(alertController, animated: true, completion: nil)
-    }
-    
-    private func hiddenFeed(from placemark: CLPlacemark) {
-        if let country = placemark.country {
-            print(country)
-            if country == "Belarus" {
-                collectionView.isHidden = false
-            } else {
-                showCanselAlert()
-                locationManader.stopUpdatingLocation()
-                locationManader.delegate = nil
-            }
-        }
     }
     // MARK: - Load Feed
     private func fetchDatafromFile() {
@@ -105,10 +82,10 @@ class FeedViewController: UICollectionViewController, UICollectionViewDelegateFl
     private func fetchData() {
         let feedLoad = FeedLoad()
         if Reachability.isConnectedToNetwork(){
-            feedLoad.loadFeed(url: "https://news.tut.by/rss/all.rss") { (rssItems) in
-                self.rssItems = rssItems
+            feedLoad.loadFeed(url: "https://news.tut.by/rss/all.rss") { [weak self] (rssItems) in
+                self?.rssItems = rssItems
                 DispatchQueue.main.async {
-                    self.collectionView.reloadSections(IndexSet(integer: 0))
+                    self?.collectionView.reloadSections(IndexSet(integer: 0))
                 }
             }
         } else {
@@ -156,5 +133,4 @@ class FeedViewController: UICollectionViewController, UICollectionViewDelegateFl
         self.present(detailViewController, animated: true, completion: nil)
     }
 }
-
 

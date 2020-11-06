@@ -17,6 +17,7 @@
 		84664E5325515C2A0098994D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84664E5225515C2A0098994D /* Assets.xcassets */; };
 		84664E5625515C2A0098994D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84664E5425515C2A0098994D /* LaunchScreen.storyboard */; };
 		84664E5F25518B8D0098994D /* RSSParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84664E5E25518B8D0098994D /* RSSParser.swift */; };
+		847F03FF2555399200D7977E /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847F03FE2555399200D7977E /* LocationManager.swift */; };
 		84BA6012255466D50016B950 /* LabelHeightCalculate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BA6011255466D50016B950 /* LabelHeightCalculate.swift */; };
 		84C44A9B25542B44006992D8 /* NetworkAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C44A9A25542B44006992D8 /* NetworkAccess.swift */; };
 		84C44A9E25542BEC006992D8 /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C44A9D25542BEC006992D8 /* FeedCell.swift */; };
@@ -37,6 +38,7 @@
 		84664E5525515C2A0098994D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		84664E5725515C2A0098994D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84664E5E25518B8D0098994D /* RSSParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSSParser.swift; sourceTree = "<group>"; };
+		847F03FE2555399200D7977E /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		84BA6011255466D50016B950 /* LabelHeightCalculate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelHeightCalculate.swift; sourceTree = "<group>"; };
 		84C44A9A25542B44006992D8 /* NetworkAccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkAccess.swift; sourceTree = "<group>"; };
 		84C44A9D25542BEC006992D8 /* FeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 			children = (
 				84664E4D25515C290098994D /* FeedViewController.swift */,
 				8404BC732553523500C5B785 /* DetailCollectionController.swift */,
+				847F03FE2555399200D7977E /* LocationManager.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -269,6 +272,7 @@
 				84664E4E25515C290098994D /* FeedViewController.swift in Sources */,
 				84C44AA225542CFF006992D8 /* FeedLoad.swift in Sources */,
 				84664E4A25515C290098994D /* AppDelegate.swift in Sources */,
+				847F03FF2555399200D7977E /* LocationManager.swift in Sources */,
 				8404BC742553523500C5B785 /* DetailCollectionController.swift in Sources */,
 				84664E4C25515C290098994D /* SceneDelegate.swift in Sources */,
 				84664E5F25518B8D0098994D /* RSSParser.swift in Sources */,
