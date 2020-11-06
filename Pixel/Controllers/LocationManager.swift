@@ -17,10 +17,10 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
     
     override init() {
         super.init()
-        checkUserLocation()
+        startCheckUserLocation()
     }
     
-    private func checkUserLocation() {
+    private func startCheckUserLocation() {
         location.requestAlwaysAuthorization()
         
         if CLLocationManager.locationServicesEnabled() {
@@ -53,11 +53,11 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
         }
     }
     
-    func getLocationCountry(complition: ((String) -> Void)?) {
+    func complition(complition: ((String) -> Void)?) {
         self.completion = complition
     }
     
-    func getLocationIsDenied(complition: ((Bool) -> Void)?) {
+    func complitionIsDenied(complition: ((Bool) -> Void)?) {
         self.completionIsDenied = complition
     }
 }

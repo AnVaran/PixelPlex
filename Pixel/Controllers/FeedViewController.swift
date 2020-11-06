@@ -8,16 +8,18 @@
 import UIKit
 import CoreLocation
 
-class FeedViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, CLLocationManagerDelegate {
+class FeedViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
-    let locationManager = LocationManager()
+    private let locationManager = LocationManager()
     private var rssItems: [RSSItem]?
-    let file = "file.txt"
-    var fileData = ""
+    private let file = "file.txt"
+    private var fileData = ""
+    private let cellID = "Cell"
+    private let constreintWidth: CGFloat = 60
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        getUserLocation()
+        bindLocationManager()
         settingCollecctioView()
         fetchDatafromFile()
         fetchData()
@@ -28,42 +30,28 @@ class FeedViewController: UICollectionViewController, UICollectionViewDelegateFl
         layout.scrollDirection = .horizontal
         collectionView.collectionViewLayout = layout
         collectionView.backgroundColor = #colorLiteral(red: 0.1803921569, green: 0.1843137255, blue: 0.2549019608, alpha: 1)
-        collectionView.register(FeedCell.self, forCellWithReuseIdentifier: "Cell")
+        collectionView.register(FeedCell.self, forCellWithReuseIdentifier: cellID)
         collectionView.isHidden = true
         navigationController?.navigationBar.isTranslucent = false
     }
-    // MARK: - Check location AlertControllers
-    func getUserLocation() {
-        locationManager.getLocationCountry { [weak self] (country) in
+    // MARK: - Bind location
+    func bindLocationManager() {
+        locationManager.complition { [weak self] (country) in
             if country == "Belarus" {
                 self?.collectionView.isHidden = false
             } else {
                 self?.collectionView.isHidden = true
-                self?.showCanselAlert()
+                self?.showAlertController(title: "Нет доступа", message: "К сожалению данное приложение работает только в Беларуси.", titleAction: "Cancel")
                 self?.locationManager.location.stopUpdatingLocation()
                 self?.locationManager.location.delegate = nil
             }
         }
         
-        locationManager.getLocationIsDenied { [weak self] (isDdenied) in
+        locationManager.complitionIsDenied { [weak self] (isDdenied) in
             if isDdenied {
-                self?.showGeolocateAlert()
+                self?.showAlertController(title: "Нет доступа", message: "К сожалению данное приложение работает c геолокицией", titleAction: "Cancel")
             }
         }
-    }
-    
-    // MARK: - Location AlertControllers
-    private func showCanselAlert() {
-        let alertController = UIAlertController(title: "Нет доступа", message: "К сожалению данное приложение работает только в Беларуси.", preferredStyle: .alert)
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        alertController.addAction(cancelAction)
-        self.present(alertController, animated: true, completion: nil)
-    }
-    private func showGeolocateAlert() {
-        let alertController = UIAlertController(title: "Нет доступа", message: "К сожалению данное приложение работает c геолокицией", preferredStyle: .alert)
-        let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)
-        alertController.addAction(cancelAction)
-        self.present(alertController, animated: true, completion: nil)
     }
     // MARK: - Load Feed
     private func fetchDatafromFile() {
@@ -101,7 +89,7 @@ class FeedViewController: UICollectionViewController, UICollectionViewDelegateFl
     }
     // MARK: - Collection View
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width - 60, height: view.frame.height)
+        return CGSize(width: view.frame.width - constreintWidth, height: view.frame.height)
     }
     // MARK: - UICollectionViewDataSource
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -112,7 +100,7 @@ class FeedViewController: UICollectionViewController, UICollectionViewDelegateFl
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! FeedCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as! FeedCell
         if let item = rssItems?[indexPath.item] {
             cell.item = item
         }
@@ -133,4 +121,11 @@ class FeedViewController: UICollectionViewController, UICollectionViewDelegateFl
         self.present(detailViewController, animated: true, completion: nil)
     }
 }
-
+extension FeedViewController {
+    private func showAlertController(title: String, message: String, titleAction: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: titleAction, style: .cancel, handler: nil)
+        alertController.addAction(cancelAction)
+        self.present(alertController, animated: true, completion: nil)
+    }
+}

@@ -8,6 +8,10 @@
 import UIKit
 
 class FeedCell: UICollectionViewCell {
+    
+    private let dateAndConstraintWidth: CGFloat = 140
+    private let cellFeedImageHightCoefficient: CGFloat = 1.1
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupViews()
@@ -95,7 +99,7 @@ class FeedCell: UICollectionViewCell {
         // left
         addConstraint(NSLayoutConstraint(item: feedImage, attribute: .left, relatedBy: .equal, toItem: contentView, attribute: .left, multiplier: 1, constant: 0))
         // height
-        addConstraint(NSLayoutConstraint(item: feedImage, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 0, constant: contentView.frame.width * 1.1))
+        addConstraint(NSLayoutConstraint(item: feedImage, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 0, constant: contentView.frame.width * cellFeedImageHightCoefficient))
         
         //dateLabel constraints
         // top
@@ -113,7 +117,7 @@ class FeedCell: UICollectionViewCell {
         // left
         addConstraint(NSLayoutConstraint(item: authorLabel, attribute: .left, relatedBy: .equal, toItem: feedImage, attribute: .left, multiplier: 1, constant: 5))
         // widht
-        addConstraint(NSLayoutConstraint(item: authorLabel, attribute: .width, relatedBy: .equal, toItem: self, attribute: .width, multiplier: 0, constant: contentView.frame.width - 140))
+        addConstraint(NSLayoutConstraint(item: authorLabel, attribute: .width, relatedBy: .equal, toItem: self, attribute: .width, multiplier: 0, constant: contentView.frame.width - dateAndConstraintWidth))
         // height
         addConstraint(NSLayoutConstraint(item: authorLabel, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 0, constant: 50))
         

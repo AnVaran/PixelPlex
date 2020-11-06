@@ -15,7 +15,8 @@ class FeedLoad: NSObject, XMLParserDelegate {
         
         let file = "file.txt"
         self.parserCompletionHandler = comletionHandler
-        let request = URLRequest(url: URL(string: url)!)
+        guard let url = URL(string: url) else { return }
+        let request = URLRequest(url: url)
         let urlSession = URLSession.shared
         let task = urlSession.dataTask(with: request) { (data, response, error) in
             guard let data = data else {
