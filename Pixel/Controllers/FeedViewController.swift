@@ -120,6 +120,7 @@ class FeedViewController: UICollectionViewController, UICollectionViewDelegateFl
         
         self.present(detailViewController, animated: true, completion: nil)
     }
+
 }
 extension FeedViewController {
     private func showAlertController(title: String, message: String, titleAction: String) {

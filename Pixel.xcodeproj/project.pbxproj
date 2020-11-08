@@ -103,6 +103,7 @@
 		84BA6014255466DE0016B950 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				847F03FE2555399200D7977E /* LocationManager.swift */,
 				84BA6011255466D50016B950 /* LabelHeightCalculate.swift */,
 			);
 			path = Helpers;
@@ -113,7 +114,6 @@
 			children = (
 				84664E4D25515C290098994D /* FeedViewController.swift */,
 				8404BC732553523500C5B785 /* DetailCollectionController.swift */,
-				847F03FE2555399200D7977E /* LocationManager.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
