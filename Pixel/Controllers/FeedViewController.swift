@@ -15,6 +15,7 @@ class FeedViewController: UICollectionViewController {
     private let file = "file.txt"
     private var fileData = ""
     private let cellID = "Cell"
+    private let topCellCoefficient: CGFloat = 8
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,10 +33,7 @@ class FeedViewController: UICollectionViewController {
         collectionView.register(FeedCell.self, forCellWithReuseIdentifier: cellID)
         collectionView.isHidden = true
         navigationController?.navigationBar.isTranslucent = false
-        collectionView.contentInset = UIEdgeInsets(top: view.frame.size.height / 8, left: 0, bottom: 0, right: 0)
-        print(collectionView.frame.size.height)
-        print(view.frame.size.width)
-        
+        collectionView.contentInset = UIEdgeInsets(top: view.frame.size.height / topCellCoefficient, left: 0, bottom: 0, right: 0)
     }
     // MARK: - Bind location
     func bindLocationManager() {

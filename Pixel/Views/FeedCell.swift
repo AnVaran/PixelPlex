@@ -61,8 +61,8 @@ class FeedCell: UICollectionViewCell {
         return label
     }()
     
-    let feedText: UILabel = {
-        var text = UILabel()
+    let feedText: TopAlignedLabel = {
+        var text = TopAlignedLabel()
         text.translatesAutoresizingMaskIntoConstraints = false
         text.numberOfLines = 0
         text.textAlignment = .center
