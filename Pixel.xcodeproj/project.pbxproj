@@ -10,6 +10,7 @@
 		079E4199F87F6D289216B172 /* Pods_Pixel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B1721D5D5C6D2CE872065CB /* Pods_Pixel.framework */; };
 		8404BC662552B6D500C5B785 /* LoadImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8404BC652552B6D500C5B785 /* LoadImage.swift */; };
 		8404BC742553523500C5B785 /* DetailCollectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8404BC732553523500C5B785 /* DetailCollectionController.swift */; };
+		840854472559513D0009CE95 /* ZoomAndSnapFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840854462559513D0009CE95 /* ZoomAndSnapFlowLayout.swift */; };
 		84664E4A25515C290098994D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84664E4925515C290098994D /* AppDelegate.swift */; };
 		84664E4C25515C290098994D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84664E4B25515C290098994D /* SceneDelegate.swift */; };
 		84664E4E25515C290098994D /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84664E4D25515C290098994D /* FeedViewController.swift */; };
@@ -29,6 +30,7 @@
 		7CB43F2C92EADC8608F8C726 /* Pods-Pixel.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pixel.release.xcconfig"; path = "Target Support Files/Pods-Pixel/Pods-Pixel.release.xcconfig"; sourceTree = "<group>"; };
 		8404BC652552B6D500C5B785 /* LoadImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadImage.swift; sourceTree = "<group>"; };
 		8404BC732553523500C5B785 /* DetailCollectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCollectionController.swift; sourceTree = "<group>"; };
+		840854462559513D0009CE95 /* ZoomAndSnapFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomAndSnapFlowLayout.swift; sourceTree = "<group>"; };
 		84664E4625515C290098994D /* Pixel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pixel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84664E4925515C290098994D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84664E4B25515C290098994D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -66,6 +68,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		840854452559509C0009CE95 /* CarouselAnimation */ = {
+			isa = PBXGroup;
+			children = (
+				840854462559513D0009CE95 /* ZoomAndSnapFlowLayout.swift */,
+			);
+			path = CarouselAnimation;
+			sourceTree = "<group>";
+		};
 		84664E3D25515C290098994D = {
 			isa = PBXGroup;
 			children = (
@@ -92,6 +102,7 @@
 				84C44AA625543050006992D8 /* Views */,
 				84C44AA725543074006992D8 /* Networking */,
 				84BA6014255466DE0016B950 /* Helpers */,
+				840854452559509C0009CE95 /* CarouselAnimation */,
 				84664E4F25515C290098994D /* Main.storyboard */,
 				84664E5225515C2A0098994D /* Assets.xcassets */,
 				84664E5425515C2A0098994D /* LaunchScreen.storyboard */,
@@ -275,6 +286,7 @@
 				847F03FF2555399200D7977E /* LocationManager.swift in Sources */,
 				8404BC742553523500C5B785 /* DetailCollectionController.swift in Sources */,
 				84664E4C25515C290098994D /* SceneDelegate.swift in Sources */,
+				840854472559513D0009CE95 /* ZoomAndSnapFlowLayout.swift in Sources */,
 				84664E5F25518B8D0098994D /* RSSParser.swift in Sources */,
 				84C44A9B25542B44006992D8 /* NetworkAccess.swift in Sources */,
 				84BA6012255466D50016B950 /* LabelHeightCalculate.swift in Sources */,

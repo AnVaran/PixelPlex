@@ -8,14 +8,13 @@
 import UIKit
 import CoreLocation
 
-class FeedViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class FeedViewController: UICollectionViewController {
 
     private let locationManager = LocationManager()
     private var rssItems: [RSSItem]?
     private let file = "file.txt"
     private var fileData = ""
     private let cellID = "Cell"
-    private let constreintWidth: CGFloat = 60
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,13 +25,17 @@ class FeedViewController: UICollectionViewController, UICollectionViewDelegateFl
     }
     
     private func settingCollecctioView() {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
-        collectionView.collectionViewLayout = layout
+        let flowLayout = ZoomAndSnapFlowLayout(size: view.frame.size)
+        collectionView.collectionViewLayout = flowLayout
+        collectionView.contentInsetAdjustmentBehavior = .always
         collectionView.backgroundColor = #colorLiteral(red: 0.1803921569, green: 0.1843137255, blue: 0.2549019608, alpha: 1)
         collectionView.register(FeedCell.self, forCellWithReuseIdentifier: cellID)
         collectionView.isHidden = true
         navigationController?.navigationBar.isTranslucent = false
+        collectionView.contentInset = UIEdgeInsets(top: view.frame.size.height / 8, left: 0, bottom: 0, right: 0)
+        print(collectionView.frame.size.height)
+        print(view.frame.size.width)
+        
     }
     // MARK: - Bind location
     func bindLocationManager() {
@@ -87,10 +90,6 @@ class FeedViewController: UICollectionViewController, UICollectionViewDelegateFl
         }
         
     }
-    // MARK: - Collection View
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width - constreintWidth, height: view.frame.height)
-    }
     // MARK: - UICollectionViewDataSource
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         guard let rssItems = rssItems else {
@@ -105,10 +104,6 @@ class FeedViewController: UICollectionViewController, UICollectionViewDelegateFl
             cell.item = item
         }
         return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 20
     }
 
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
