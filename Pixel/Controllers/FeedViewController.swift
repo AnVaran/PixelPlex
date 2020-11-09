@@ -15,7 +15,7 @@ class FeedViewController: UICollectionViewController {
     private let file = "file.txt"
     private var fileData = ""
     private let cellID = "Cell"
-    private let topCellCoefficient: CGFloat = 8
+    private let topCellCoefficient: CGFloat = 7
     
     override func viewDidLoad() {
         super.viewDidLoad()
